@@ -3,29 +3,9 @@
 #include <string>
 
 
-int main() {
-	std::ifstream myfile("textexample.txt");
-
-	// new lines will be skipped unless we stop it from happening:    
-	myfile.unsetf(std::ios_base::skipws);
-
-	// count the newlines with an algorithm specialized for counting:
-	unsigned line_count = std::count(
-		std::istream_iterator<char>(myfile),
-		std::istream_iterator<char>(),
-		'\n');
-
-	std::cout << "Lines: " << line_count << "\n";
-	return 0;
-}
-
-
-/*
 int get_lines(std::ifstream&);
 
 int main(){
-	std::string str;
-	str = "Test string";
 
 	std::ifstream file;
 
@@ -40,15 +20,17 @@ int main(){
 }
 
 int get_lines(std::ifstream &file) {
-	
+	std::string line ("");
+	int num_lines;
 
 	do {
-//		getline(file, line);
+		getline(file, line);
 		
-		if (line.at(0) != "") {
-
+		if (line.at(0)) {
+			num_lines++;
 		}
+
 	} while (!file.eof());
 
+	return num_lines;
 }
-*/
